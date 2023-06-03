@@ -13,6 +13,6 @@ public class FourthTask {
         long seed = 12345L;
 
         Stream<Long> randomStream = generateRandomStream(a, c, m, seed);
-        randomStream.forEach(System.out::println); // randomStream.limit(10).forEach(System.out::println);
+        randomStream.forEach(System.out::println);
     }
 }
