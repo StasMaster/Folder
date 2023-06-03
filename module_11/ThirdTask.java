@@ -31,8 +31,7 @@ public class ThirdTask {
     }
 
     public static void main(String[] args) {
-//        String[] array = {"1, 2, 0", "4, 5"};
-        String[] array = {"1, 2, 0", "4, 5, string"};
+        String[] array = {"1, 2, 0", "4, 5"};
         String result = extractAndSortNumbers(array);
         System.out.println(result);
     }
