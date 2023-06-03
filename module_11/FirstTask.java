@@ -10,7 +10,6 @@ public class FirstTask {
                 int index = i + 1;
                 String name = names.get(i);
                 stringBuilder.append(index).append(". ").append(name).append(", ");
-//                stringBuilder.append(index).append(". ").append(name).append("\n");
             }
         }
         if (stringBuilder.length() > 0) {
