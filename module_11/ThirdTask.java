@@ -1,33 +1,21 @@
 package module_11;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ThirdTask {
     public static String extractAndSortNumbers(String[] array) {
-        List<Integer> numbersList = new ArrayList<>();
+        List<Integer> numbersList = Arrays.stream(array)
+                .flatMap(str -> Arrays.stream(str.split(", ")))
+                .filter(s -> s.matches("\\d+"))
+                .map(Integer::parseInt)
+                .sorted()
+                .collect(Collectors.toList());
 
-        for (String str : array) {
-            String[] splitArray = str.split(", ");
-
-            for (String num : splitArray) {
-                try {
-                    int number = Integer.parseInt(num);
-                    numbersList.add(number);
-                } catch (NumberFormatException e) {
-                }
-            }
-        }
-        numbersList.sort(Integer::compareTo);
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < numbersList.size(); i++) {
-            if (i > 0) {
-                stringBuilder.append(", ");
-            }
-            stringBuilder.append(numbersList.get(i));
-        }
-        return stringBuilder.toString();
+        return numbersList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
     }
 
     public static void main(String[] args) {
