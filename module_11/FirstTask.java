@@ -1,22 +1,17 @@
 package module_11;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class FirstTask {
     public static String formatNames(List<String> names) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < names.size(); i++) {
-            if ((i + 1) % 2 != 0) {
-                int index = i + 1;
-                String name = names.get(i);
-                stringBuilder.append(index).append(". ").append(name).append(", ");
-            }
-        }
-        if (stringBuilder.length() > 0) {
-            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
-        }
-        return stringBuilder.toString();
+        return IntStream.range(0, names.size())
+                .filter(i -> (i + 1) % 2 != 0)
+                .mapToObj(i -> (i + 1) + ". " + names.get(i))
+                .collect(Collectors.joining(", "));
     }
+
     public static void main(String[] args) {
         List<String> namesList = List.of("Ivan", "Maria", "Peter", "Olga", "John", "Nekifor", "Fedot", "Elisey", "Feofan");
         String formattedNames = formatNames(namesList);
