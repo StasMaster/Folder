@@ -15,7 +15,7 @@ import org.apache.http.client.methods.HttpDelete;
 import java.io.FileWriter;
 
 public class CompletedTask {
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/users";
+    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/users/";
     public static void main(String[] args) {
         createNewUser();
         updateExistingUser();
@@ -28,7 +28,7 @@ public class CompletedTask {
     }
     public static void getOpenTasksForUser(int userId) {
         HttpClient httpClient = HttpClientBuilder.create().build();
-        String todosUrl = "https://jsonplaceholder.typicode.com/users/" + userId + "/todos";
+        String todosUrl = BASE_URL + userId + "/todos";
 
         try {
             HttpResponse response = httpClient.execute(new HttpGet(todosUrl));
