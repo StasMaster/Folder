@@ -28,18 +28,15 @@ public class FirstTask {
         HttpPost request = new HttpPost(BASE_URL);
 
         try {
-            // Создаем новый объект пользователя
             JSONObject user = new JSONObject();
             user.put("name", "Talia Mia Tia");
             user.put("username", "taliamiatia");
             user.put("email", "taliamiatia@example.com");
 
-            // Устанавливаем JSON-содержимое запроса
             StringEntity params = new StringEntity(user.toString());
             request.addHeader("content-type", "application/json");
             request.setEntity(params);
 
-            // Отправляем POST-запрос на создание нового пользователя
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -54,21 +51,18 @@ public class FirstTask {
 
     public static void updateExistingUser() {
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPut request = new HttpPut(BASE_URL + "/10");  // Замените "1" на нужный ID пользователя
+        HttpPut request = new HttpPut(BASE_URL + "/10");
 
         try {
-            // Создаем объект пользователя с обновленными данными
             JSONObject updatedUser = new JSONObject();
             updatedUser.put("name", "Talia Mia Tia");
             updatedUser.put("username", "taliamiatia");
             updatedUser.put("email", "taliamiatia@example.com");
 
-            // Устанавливаем JSON-содержимое запроса
             StringEntity params = new StringEntity(updatedUser.toString());
             request.addHeader("content-type", "application/json");
             request.setEntity(params);
 
-            // Отправляем PUT-запрос на обновление пользователя
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -83,13 +77,11 @@ public class FirstTask {
 
     public static void deleteUser() {
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpDelete request = new HttpDelete(BASE_URL + "/11");  // Замените "1" на нужный ID пользователя
+        HttpDelete request = new HttpDelete(BASE_URL + "/11");
 
         try {
-            // Отправляем DELETE-запрос на удаление пользователя
             HttpResponse response = httpClient.execute(request);
 
-            // Проверяем статус ответа
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode >= 200 && statusCode < 300) {
                 System.out.println("Пользователь успешно удален.");
@@ -106,7 +98,6 @@ public class FirstTask {
         HttpGet request = new HttpGet(BASE_URL);
 
         try {
-            // Отправляем GET-запрос на получение информации о пользователях
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -124,7 +115,6 @@ public class FirstTask {
         HttpGet request = new HttpGet(BASE_URL + "/" + userId);
 
         try {
-            // Отправляем GET-запрос на получение информации о пользователе
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -142,7 +132,6 @@ public class FirstTask {
         HttpGet request = new HttpGet(BASE_URL + "?username=" + username);
 
         try {
-            // Отправляем GET-запрос на получение информации о пользователе
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
