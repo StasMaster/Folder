@@ -28,7 +28,6 @@ public class ThirdTask {
                 // Парсим JSON-ответ и получаем массив задач
                 JSONArray todosArray = new JSONArray(jsonString);
 
-                // Фильтруем задачи по полю "completed"
                 JSONArray openTasksArray = new JSONArray();
                 for (int i = 0; i < todosArray.length(); i++) {
                     JSONObject task = todosArray.getJSONObject(i);
